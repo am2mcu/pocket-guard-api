@@ -1,0 +1,40 @@
+import { Schema, model } from "mongoose";
+
+const labelSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Name is required"],
+      unique: [true, "Label name must be unique"],
+      maxLength: [100, "Name cannot be more than 100 characters"],
+      trim: true,
+      index: true,
+    },
+    description: {
+      type: String,
+      maxLength: [100, "Description cannot be more than 200 characters"],
+      trim: true,
+    },
+    color: {
+      type: String,
+      required: [true, "Color is required"],
+      trim: true,
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      transform: function (doc, ret, options) {
+        delete ret._id;
+        delete ret.__v;
+        delete ret.createdAt;
+      },
+    },
+  },
+);
+
+labelSchema.virtual("id").get(function () {
+  return this._id.toString();
+});
+
+export default model("Label", labelSchema);
