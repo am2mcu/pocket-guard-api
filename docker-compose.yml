@@ -1,0 +1,29 @@
+services:
+  api:
+    build: .
+    ports:
+      - "82:3000"
+    environment:
+      - PORT=3000
+      - DB_URI=mongodb://mongo:27017/pocket-guard
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:noble
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=pocket-guard
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
