@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import transactionRouter from "./routes/transactionRouter.js";
 import labelRouter from "./routes/labelRouter.js";
 import cardRouter from "./routes/cardRouter.js";
