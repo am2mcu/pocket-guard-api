@@ -1,5 +1,7 @@
 services:
   api:
+    image: ${IMAGE_NAME}
+    container: pocket-guard-api
     ports:
       - "82:3000"
     environment:
