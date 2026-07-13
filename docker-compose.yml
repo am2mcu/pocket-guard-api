@@ -5,8 +5,9 @@ services:
     ports:
       - "82:3000"
     environment:
-      - PORT=3000
-      - DB_URI=mongodb://mongo:27017/pocket-guard
+      PORT: 3000
+      DB_URI: mongodb://mongo:27017/pocket-guard
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN}
     depends_on:
       mongo:
         condition: service_healthy
