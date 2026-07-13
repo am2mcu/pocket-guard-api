@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/pocket-guard-api
-  WORKDIR: /opt/${{ secrets.SERVER_USER }}/pocket-guard-api
+  WORKDIR: /home/${{ secrets.SERVER_USER }}/pocket-guard-api
 
 jobs:
   build-and-deploy:
