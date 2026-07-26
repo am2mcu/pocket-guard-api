@@ -5,7 +5,6 @@ const labelSchema = new Schema(
     name: {
       type: String,
       required: [true, "Name is required"],
-      unique: [true, "Label name must be unique"],
       maxLength: [100, "Name cannot be more than 100 characters"],
       trim: true,
       index: true,
@@ -35,6 +34,11 @@ const labelSchema = new Schema(
       },
     },
   },
+);
+
+labelSchema.index(
+  { name: 1, user: 1 },
+  { unique: [true, "Label name must be unique"] },
 );
 
 labelSchema.virtual("id").get(function () {
