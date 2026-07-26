@@ -14,6 +14,7 @@ class TransactionController {
     const transaction = await transactionService.createTransaction(
       req.card.id,
       req.body,
+      req.user.id,
     );
     res.status(201).json({ transaction });
   });

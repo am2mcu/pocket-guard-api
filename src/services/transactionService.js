@@ -24,13 +24,14 @@ class TransactionService {
     return await Transaction.find(filter);
   }
 
-  async createTransaction(card, data) {
+  async createTransaction(card, data, userId) {
     const { amount, description, label } = data;
     const transaction = await Transaction.create({
       amount,
       description,
       label,
       card,
+      user: userId,
     });
     return await Transaction.findById(transaction.id); // label won't be populated otherwise
   }
