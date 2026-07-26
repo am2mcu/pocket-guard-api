@@ -3,7 +3,7 @@ import cardService from "../services/cardService.js";
 
 class CardController {
   getCards = asyncHandler(async (req, res, next) => {
-    const cards = await cardService.getCards();
+    const cards = await cardService.getCards(req.user.id);
     res.status(200).json({
       cards,
       total: cards.length,
