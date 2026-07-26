@@ -5,7 +5,7 @@ import asyncHandler from "express-async-handler";
 const sendAsCookie = (res, token) => {
   res.cookie("jwt", token, {
     httpOnly: true,
-    maxAge: 60 * 60 * 1000,
+    maxAge: 60 * 60 * 1000 * 24,
     secure: env.NODE_ENV === "production",
   });
 };
