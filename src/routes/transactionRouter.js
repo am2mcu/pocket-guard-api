@@ -6,7 +6,7 @@ const router = new Router();
 
 router
   .route("/")
-  .get(transactionController.getTransactions)
+  .get(authenticate, transactionController.getTransactions)
   .post(authenticate, transactionController.createTransaction);
 
 router.route("/stats").get(transactionController.getStats);

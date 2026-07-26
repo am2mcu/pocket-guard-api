@@ -19,8 +19,9 @@ class TransactionService {
     return filter;
   }
 
-  async getTransactions(card, query) {
+  async getTransactions(card, query, userId) {
     const filter = await this._getFilter(card, query);
+    filter.user = userId;
     return await Transaction.find(filter);
   }
 

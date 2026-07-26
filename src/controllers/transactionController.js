@@ -6,6 +6,7 @@ class TransactionController {
     const transactions = await transactionService.getTransactions(
       req.card?.id,
       req.query,
+      req.user.id,
     );
     res.status(200).json({ transactions, total: transactions.length });
   });
