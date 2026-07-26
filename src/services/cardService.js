@@ -11,11 +11,12 @@ class CardService {
     return await Card.findById(id);
   }
 
-  async createCard(data) {
+  async createCard(data, userId) {
     const { number, balance } = data;
 
     const card = await Card.create({
       number,
+      user: userId,
     });
 
     const label = await labelService.getInitialBalanceLabel();

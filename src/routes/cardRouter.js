@@ -9,7 +9,7 @@ const router = new Router();
 router
   .route("/")
   .get(authenticate, cardController.getCards)
-  .post(cardController.createCard);
+  .post(authenticate, cardController.createCard);
 
 router
   .route("/:id")
