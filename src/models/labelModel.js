@@ -20,6 +20,10 @@ const labelSchema = new Schema(
       required: [true, "Color is required"],
       trim: true,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     toJSON: {
