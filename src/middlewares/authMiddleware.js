@@ -30,13 +30,6 @@ export const authenticate = asyncHandler(async (req, res, next) => {
   const user = await User.findById(id).select("+passwordChangedAt");
   if (!user) throw new Error("User no longer exists");
 
-  // prevent tokens from a deleted account or newly changed (email)
-  if (!user.isVerified) throw new Error("User is not verified yet");
-  if (user.isDeleted) throw new Error("User no longer exists");
-
-  if (user.isPasswordChangedAfterToken(iat))
-    throw new Error("Passowrd has changed. Token is no longer valid");
-
   req.user = user;
   next();
 });
