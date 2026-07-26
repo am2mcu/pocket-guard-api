@@ -3,8 +3,8 @@ import transactionService from "./transactionService.js";
 import labelService from "./labelService.js";
 
 class CardService {
-  async getCards() {
-    return await Card.find();
+  async getCards(userId) {
+    return await Card.find({ user: userId });
   }
 
   async getCard(id) {
