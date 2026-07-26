@@ -9,7 +9,7 @@ router
   .get(authenticate, transactionController.getTransactions)
   .post(authenticate, transactionController.createTransaction);
 
-router.route("/stats").get(transactionController.getStats);
+router.route("/stats").get(authenticate, transactionController.getStats);
 
 router
   .route("/:id")

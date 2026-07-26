@@ -34,7 +34,7 @@ class TransactionController {
   });
 
   getStats = asyncHandler(async (req, res, next) => {
-    const stats = await transactionService.getStats(req.card?.id);
+    const stats = await transactionService.getStats(req.card?.id, req.user.id);
     res.status(200).json({ stats });
   });
 }

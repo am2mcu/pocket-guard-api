@@ -64,8 +64,8 @@ class TransactionService {
     return await Transaction.updateMany({ label }, { $unset: { label: "" } });
   }
 
-  async getStats(card) {
-    const matchExpr = {};
+  async getStats(card, userId) {
+    const matchExpr = { user: new Types.ObjectId(userId) };
     if (card) matchExpr.card = new Types.ObjectId(card);
 
     const stats = await Transaction.aggregate([
