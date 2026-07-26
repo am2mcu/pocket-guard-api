@@ -3,7 +3,7 @@ import labelService from "../services/labelService.js";
 
 class LabelController {
   getLabels = asyncHandler(async (req, res, next) => {
-    const labels = await labelService.getLabels(req.query);
+    const labels = await labelService.getLabels(req.query, req.user.id);
     res.status(200).json({ labels, total: labels.length });
   });
 

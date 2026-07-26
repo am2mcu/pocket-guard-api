@@ -2,9 +2,12 @@ import Label from "../models/labelModel.js";
 import transactionService from "./transactionService.js";
 
 class LabelService {
-  async getLabels(query) {
+  async getLabels(query, userId) {
     const { s = "" } = query;
-    return await Label.find({ name: { $regex: s, $options: "i" } });
+    return await Label.find({
+      name: { $regex: s, $options: "i" },
+      user: userId,
+    });
   }
 
   async getInitialBalanceLabel() {
