@@ -9,6 +9,10 @@ const cardSchema = new Schema(
       trim: true,
       match: [/^[0-9]{16}/, "Card number is not valid"],
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     createdAt: {
       type: Date,
       default: Date.now(),
