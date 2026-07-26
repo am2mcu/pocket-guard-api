@@ -10,14 +10,15 @@ class LabelService {
     });
   }
 
-  async getInitialBalanceLabel() {
-    const label = await Label.findOne({ name: "init" });
+  async getInitialBalanceLabel(userId) {
+    const label = await Label.findOne({ name: "init", user: userId });
 
     if (!label)
       return await this.createLabel({
         name: "init",
         description: "Initial Balance",
         color: "#009966",
+        user: userId,
       });
 
     return label;

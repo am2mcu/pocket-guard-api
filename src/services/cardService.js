@@ -19,7 +19,7 @@ class CardService {
       user: userId,
     });
 
-    const label = await labelService.getInitialBalanceLabel();
+    const label = await labelService.getInitialBalanceLabel(userId);
 
     await transactionService.createTransaction(card.id, {
       amount: balance,
