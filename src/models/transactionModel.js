@@ -16,6 +16,10 @@ const transactionSchema = new Schema(
       ref: "Card",
       required: [true, "Card is required"],
     }, // child to parent
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     createdAt: { type: Date, default: Date.now(), select: false },
   },
   {
