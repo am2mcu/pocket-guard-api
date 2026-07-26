@@ -8,7 +8,7 @@ class LabelController {
   });
 
   createLabel = asyncHandler(async (req, res, next) => {
-    const label = await labelService.createLabel(req.body);
+    const label = await labelService.createLabel(req.body, req.user.id);
     res.status(201).json({ label });
   });
 

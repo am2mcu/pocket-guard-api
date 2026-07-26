@@ -27,9 +27,9 @@ class LabelService {
     return await Label.findOne({ name });
   }
 
-  async createLabel(data) {
+  async createLabel(data, userId) {
     const { name, description, color } = data;
-    return await Label.create({ name, description, color });
+    return await Label.create({ name, description, color, user: userId });
   }
 
   async updateLabel(id, data) {

@@ -7,7 +7,7 @@ const router = new Router();
 router
   .route("/")
   .get(authenticate, labelController.getLabels)
-  .post(labelController.createLabel);
+  .post(authenticate, labelController.createLabel);
 
 router
   .route("/:id")
