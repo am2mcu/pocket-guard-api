@@ -9,7 +9,10 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  cors({ origin: ["http://localhost:5173", process.env.ALLOWED_ORIGIN] }),
+  cors({
+    origin: ["http://localhost:5173", process.env.ALLOWED_ORIGIN],
+    credentials: true,
+  }),
 );
 
 app.use("/api/v1/", authRouter);
