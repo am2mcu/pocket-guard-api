@@ -51,8 +51,8 @@ class TransactionService {
     );
   }
 
-  async deleteTransaction(id) {
-    return await Transaction.findByIdAndDelete(id);
+  async deleteTransaction(id, userId) {
+    return await Transaction.findOneAndDelete({ _id: id, user: userId });
   }
 
   async deleteCardTransactions(card) {

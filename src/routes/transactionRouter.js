@@ -4,12 +4,14 @@ import { authenticate } from "../middlewares/authMiddleware.js";
 
 const router = new Router();
 
+router.use(authenticate);
+
 router
   .route("/")
-  .get(authenticate, transactionController.getTransactions)
-  .post(authenticate, transactionController.createTransaction);
+  .get(transactionController.getTransactions)
+  .post(transactionController.createTransaction);
 
-router.route("/stats").get(authenticate, transactionController.getStats);
+router.route("/stats").get(transactionController.getStats);
 
 router
   .route("/:id")

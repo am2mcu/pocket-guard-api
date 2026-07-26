@@ -29,7 +29,7 @@ class TransactionController {
   });
 
   deleteTransaction = asyncHandler(async (req, res, next) => {
-    await transactionService.deleteTransaction(req.params.id);
+    await transactionService.deleteTransaction(req.params.id, req.user.id);
     res.status(204).json(null);
   });
 
