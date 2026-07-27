@@ -4,10 +4,12 @@ import { authenticate } from "../middlewares/authMiddleware.js";
 
 const router = new Router();
 
+router.use(authenticate);
+
 router
   .route("/")
-  .get(authenticate, labelController.getLabels)
-  .post(authenticate, labelController.createLabel);
+  .get(labelController.getLabels)
+  .post(labelController.createLabel);
 
 router
   .route("/:id")
