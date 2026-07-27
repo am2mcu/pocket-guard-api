@@ -42,9 +42,9 @@ class LabelService {
     );
   }
 
-  async deleteLabel(id) {
-    const label = await Label.findByIdAndDelete(id);
-    await transactionService.deleteLabel(id);
+  async deleteLabel(id, userId) {
+    const label = await Label.findOneAndDelete({ _id: id, user: userId });
+    await transactionService.deleteLabel(id, userId);
     return label;
   }
 }

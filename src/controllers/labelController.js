@@ -18,7 +18,7 @@ class LabelController {
   });
 
   deleteLabel = asyncHandler(async (req, res, next) => {
-    await labelService.deleteLabel(req.params.id);
+    await labelService.deleteLabel(req.params.id, req.user.id);
     res.status(204).json(null);
   });
 }
