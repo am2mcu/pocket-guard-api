@@ -8,6 +8,8 @@ services:
       PORT: 3000
       DB_URI: mongodb://mongo:27017/pocket-guard
       ALLOWED_ORIGIN: ${ALLOWED_ORIGIN}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRY: ${JWT_EXPIRY}
     depends_on:
       mongo:
         condition: service_healthy
