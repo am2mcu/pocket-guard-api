@@ -60,8 +60,11 @@ class TransactionService {
     return transactions;
   }
 
-  async deleteLabel(label) {
-    return await Transaction.updateMany({ label }, { $unset: { label: "" } });
+  async deleteLabel(label, userId) {
+    return await Transaction.updateMany(
+      { label, user: userId },
+      { $unset: { label: "" } },
+    );
   }
 
   async getStats(card, userId) {
