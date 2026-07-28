@@ -21,11 +21,15 @@ class CardService {
 
     const label = await labelService.getInitialBalanceLabel(userId);
 
-    await transactionService.createTransaction(card.id, {
-      amount: balance,
-      description: "Initial balance",
-      label: label.id,
-    });
+    await transactionService.createTransaction(
+      card.id,
+      {
+        amount: balance,
+        description: "Initial balance",
+        label: label.id,
+      },
+      userId,
+    );
 
     return card;
   }
