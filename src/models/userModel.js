@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import cryptography from "../utils/cryptoHandler.js";
 import { env } from "../config/env.js";
 import { createAuthToken } from "../utils/jwtHandler.js";
+import userRole from "../utils/userRole.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -17,6 +18,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
       select: false,
+    },
+    role: {
+      type: String,
+      enum: [userRole.ADMIN, userRole.USER],
+      default: userRole.USER,
     },
   },
   {
