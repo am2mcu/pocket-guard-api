@@ -2,10 +2,10 @@ services:
   api:
     image: ${IMAGE_NAME}
     container_name: pocket-guard-api
-    ports:
-      - "82:3000"
+    expose:
+      - "80"
     environment:
-      PORT: 3000
+      PORT: 80
       DB_URI: mongodb://mongo:27017/pocket-guard
       ALLOWED_ORIGIN: ${ALLOWED_ORIGIN}
       JWT_SECRET: ${JWT_SECRET}
@@ -14,6 +14,9 @@ services:
       mongo:
         condition: service_healthy
     restart: unless-stopped
+    networks:
+      - default
+      - proxy
 
   mongo:
     image: mongo:noble
@@ -31,3 +34,7 @@ services:
 
 volumes:
   mongo-data:
+
+networks:
+  proxy:
+    external: true
