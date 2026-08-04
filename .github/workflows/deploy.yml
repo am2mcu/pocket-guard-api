@@ -8,7 +8,6 @@ on:
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/pocket-guard-api
   WORKDIR: /home/${{ secrets.SERVER_USER }}/pocket-guard-api
-  ALLOWED_ORIGIN: http://${{ secrets.SERVER_HOST }}:81
 
 jobs:
   build-and-deploy:
