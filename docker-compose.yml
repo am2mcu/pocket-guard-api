@@ -31,10 +31,15 @@ services:
       retries: 5
       start_period: 30s
     restart: unless-stopped
+    networks:
+      - default
+      - shared-mongo
 
 volumes:
   mongo-data:
 
 networks:
   proxy:
+    external: true
+  shared-mongo:
     external: true
